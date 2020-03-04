@@ -14,6 +14,8 @@
 		F7A85E6B240FB36900267CA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E69240FB36900267CA4 /* LaunchScreen.storyboard */; };
 		F7A85E76240FCA7200267CA4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E75240FCA7200267CA4 /* OnboardingViewController.swift */; };
 		F7A85E78240FCA9100267CA4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E77240FCA9100267CA4 /* Onboarding.storyboard */; };
+		F7A85E7C240FCC3B00267CA4 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E7A240FCC3B00267CA4 /* PageCell.swift */; };
+		F7A85E7D240FCC3B00267CA4 /* PageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E7B240FCC3B00267CA4 /* PageCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		F7A85E6C240FB36900267CA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7A85E75240FCA7200267CA4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		F7A85E77240FCA9100267CA4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		F7A85E7A240FCC3B00267CA4 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
+		F7A85E7B240FCC3B00267CA4 /* PageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,10 +84,20 @@
 		F7A85E74240FCA3000267CA4 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				F7A85E79240FCC1800267CA4 /* PageCell */,
 				F7A85E75240FCA7200267CA4 /* OnboardingViewController.swift */,
 				F7A85E77240FCA9100267CA4 /* Onboarding.storyboard */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		F7A85E79240FCC1800267CA4 /* PageCell */ = {
+			isa = PBXGroup;
+			children = (
+				F7A85E7A240FCC3B00267CA4 /* PageCell.swift */,
+				F7A85E7B240FCC3B00267CA4 /* PageCell.xib */,
+			);
+			path = PageCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +163,7 @@
 				F7A85E68240FB36900267CA4 /* Assets.xcassets in Resources */,
 				F7A85E66240FB36800267CA4 /* Main.storyboard in Resources */,
 				F7A85E78240FCA9100267CA4 /* Onboarding.storyboard in Resources */,
+				F7A85E7D240FCC3B00267CA4 /* PageCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +196,7 @@
 			files = (
 				F7A85E63240FB36800267CA4 /* MainViewController.swift in Sources */,
 				F7A85E76240FCA7200267CA4 /* OnboardingViewController.swift in Sources */,
+				F7A85E7C240FCC3B00267CA4 /* PageCell.swift in Sources */,
 				F7A85E5F240FB36800267CA4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
