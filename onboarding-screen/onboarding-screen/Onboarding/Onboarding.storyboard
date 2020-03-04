@@ -15,35 +15,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IaT-Ce-bc5">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uiq-cD-xlB">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells/>
-                            </collectionView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IA4-Sf-kqi">
+                                <rect key="frame" x="0.0" y="44" width="414" height="832"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="IaT-Ce-bc5">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="795"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uiq-cD-xlB">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Tow-uf-OcG">
+                                        <rect key="frame" x="0.0" y="795" width="414" height="37"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </pageControl>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="DQg-Or-qq0" firstAttribute="trailing" secondItem="IaT-Ce-bc5" secondAttribute="trailing" id="Bsj-10-F0O"/>
-                            <constraint firstItem="IaT-Ce-bc5" firstAttribute="leading" secondItem="DQg-Or-qq0" secondAttribute="leading" id="D2B-aR-gcf"/>
-                            <constraint firstItem="DQg-Or-qq0" firstAttribute="bottom" secondItem="IaT-Ce-bc5" secondAttribute="bottom" id="Odg-RE-7N5"/>
-                            <constraint firstItem="IaT-Ce-bc5" firstAttribute="top" secondItem="DQg-Or-qq0" secondAttribute="top" id="kZh-EF-kbI"/>
+                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="top" secondItem="DQg-Or-qq0" secondAttribute="top" id="9Gd-e3-LHY"/>
+                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="trailing" secondItem="DQg-Or-qq0" secondAttribute="trailing" id="EXf-5k-AJc"/>
+                            <constraint firstAttribute="bottom" secondItem="IA4-Sf-kqi" secondAttribute="bottom" constant="20" symbolic="YES" id="WmI-eo-OPc"/>
+                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="leading" secondItem="DQg-Or-qq0" secondAttribute="leading" id="oAl-y0-Ywk"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DQg-Or-qq0"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="IaT-Ce-bc5" id="KEx-fW-yAp"/>
                         <outlet property="layout" destination="uiq-cD-xlB" id="o1u-aR-GT4"/>
+                        <outlet property="pageControl" destination="Tow-uf-OcG" id="d2m-5v-Fo1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xf-Hq-mS9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="139"/>
+            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
         </scene>
     </scenes>
 </document>

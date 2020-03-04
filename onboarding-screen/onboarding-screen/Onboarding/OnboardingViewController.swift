@@ -19,12 +19,18 @@ final class OnboardingViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var layout: UICollectionViewFlowLayout!
+    @IBOutlet private weak var pageControl: UIPageControl!
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+    }
+    
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        pageControl.currentPage = Int(targetContentOffset.pointee.x / view.frame.width)
+        // probably that's the place to hide Skip and show Continue
     }
     
     // MARK: - Helpers
@@ -35,6 +41,8 @@ final class OnboardingViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true // to enable paging
         layout.scrollDirection = .horizontal
+        pageControl.numberOfPages = colors.count
+        #warning("page control customization (color etc.)")
     }
 }
 
@@ -71,3 +79,6 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
         return 0 // need to overrride this bacause it will add 5 or 10 by default
     }
 }
+
+#warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
+#warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")
