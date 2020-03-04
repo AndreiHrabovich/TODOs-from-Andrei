@@ -29,11 +29,6 @@ final class OnboardingViewController: UIViewController {
         setupUI()
     }
     
-    deinit {
-        print("OnboardingVC is deinitialized")
-        #warning("Remove after debugging")
-    }
-    
     internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         pageControl.currentPage = Int(targetContentOffset.pointee.x / collectionView.frame.width) // - 1
         handleSkipButtonAppearance() // - 2
@@ -70,8 +65,6 @@ final class OnboardingViewController: UIViewController {
         } else {
             skipButton.setTitle("Skip", for: .normal)
         }
-        
-        print("Current Page: ", pageControl.currentPage)
     }
 }
 
