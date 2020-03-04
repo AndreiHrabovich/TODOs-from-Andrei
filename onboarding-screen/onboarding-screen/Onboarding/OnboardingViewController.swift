@@ -23,10 +23,15 @@ final class OnboardingViewController: UIViewController {
     @IBOutlet private weak var skipButton: UIButton!
     
     // MARK: - Lifecycle
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    deinit {
+        print("OnboardingVC is deinitialized")
+        #warning("Remove after debugging")
     }
     
     internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
@@ -41,8 +46,9 @@ final class OnboardingViewController: UIViewController {
     @IBAction private func skipButtonTapped(_ sender: UIButton) {
         // move to the main VC
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") // if that's the only vc in the storyboard, can we do without identifier (Storyboard ID) ?
+        let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") as MainViewController // if that's the only vc in the storyboard, can we do without identifier (Storyboard ID) ?
         mainVC.modalPresentationStyle = .fullScreen
+        
         present(mainVC, animated: true, completion: nil)
         #warning("TODO - to figure out how to dismiss the onboarding vc after navigating to the main vc")
     }
@@ -55,7 +61,7 @@ final class OnboardingViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true // to enable paging
         layout.scrollDirection = .horizontal
-    
+        
         pageControl.numberOfPages = colors.count
         skipButton.setTitle("Skip", for: .normal)
         #warning("TODO - page control customization (color etc.)")
