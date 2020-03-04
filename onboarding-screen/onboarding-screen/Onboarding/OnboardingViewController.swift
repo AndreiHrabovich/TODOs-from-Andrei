@@ -24,13 +24,14 @@ final class OnboardingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCollectionView()
     }
     
     // MARK: - Helpers
     
-    private func setupCOllectionView() {
+    private func setupCollectionView() {
         collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
-//        collectionView.delegate = self
+        collectionView.delegate = self // is needed anyways (without it the cells don't scale properly)
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true // to enable paging
         layout.scrollDirection = .horizontal
@@ -42,7 +43,7 @@ final class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,12 +58,16 @@ extension OnboardingViewController: UICollectionViewDataSource {
 
 extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.frame.height - 20
+        let height = collectionView.frame.height
         let width = collectionView.frame.size.width
         return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0 // need to overrride this bacause it will add 5 or 10 by default
     }
 }
