@@ -71,6 +71,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7A85E6F240FB36900267CA4 /* Build configuration list for PBXNativeTarget "onboarding-screen" */;
 			buildPhases = (
+				F7A85E72240FB4FB00267CA4 /* ShellScript */,
 				F7A85E57240FB36800267CA4 /* Sources */,
 				F7A85E58240FB36800267CA4 /* Frameworks */,
 				F7A85E59240FB36800267CA4 /* Resources */,
@@ -129,6 +130,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F7A85E72240FB4FB00267CA4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F7A85E57240FB36800267CA4 /* Sources */ = {
