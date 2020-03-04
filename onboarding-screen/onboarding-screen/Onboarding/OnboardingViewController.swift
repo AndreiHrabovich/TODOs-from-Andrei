@@ -26,7 +26,10 @@ final class OnboardingViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    // MARK: - Helpers
+    
     private func setupCOllectionView() {
+        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
 //        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true // to enable paging
@@ -53,4 +56,13 @@ extension OnboardingViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let height = collectionView.frame.height - 20
+        let width = collectionView.frame.size.width
+        return CGSize(width: width, height: height)
+    }
 }
