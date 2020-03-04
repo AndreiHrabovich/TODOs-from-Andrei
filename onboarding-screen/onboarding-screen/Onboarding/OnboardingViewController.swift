@@ -20,29 +20,55 @@ final class OnboardingViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var layout: UICollectionViewFlowLayout!
     @IBOutlet private weak var pageControl: UIPageControl!
+    @IBOutlet private weak var skipButton: UIButton!
     
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupUI()
     }
     
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        pageControl.currentPage = Int(targetContentOffset.pointee.x / view.frame.width)
-        // probably that's the place to hide Skip and show Continue
+    internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        pageControl.currentPage = Int(targetContentOffset.pointee.x / collectionView.frame.width)
+        // USE collectionView.frame.width because it can be of different value and it directly affects the calculation
+        // probably that's the place to change the button from Skip to Start when reaching the last page
+        handleSkipButtonAppearance()
+    }
+    
+    // MARK: - IBActions
+    
+    @IBAction private func skipButtonTapped(_ sender: UIButton) {
+        // move to the main VC
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let mainVC = mainStoryboard.instantiateViewController(identifier: "MainVC") // if that's the only vc in the storyboard, can we do without identifier (Storyboard ID) ?
+        mainVC.modalPresentationStyle = .fullScreen
+        present(mainVC, animated: true, completion: nil)
+        #warning("TODO - to figure out how to dismiss the onboarding vc after navigating to the main vc")
     }
     
     // MARK: - Helpers
     
-    private func setupCollectionView() {
+    private func setupUI() {
         collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
         collectionView.delegate = self // is needed anyways (without it the cells don't scale properly)
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true // to enable paging
         layout.scrollDirection = .horizontal
+    
         pageControl.numberOfPages = colors.count
-        #warning("page control customization (color etc.)")
+        skipButton.setTitle("Skip", for: .normal)
+        #warning("TODO - page control customization (color etc.)")
+    }
+    
+    private func handleSkipButtonAppearance () {
+        if pageControl.currentPage == (colors.count - 1) { // because the array starts from 0
+            skipButton.setTitle("Start", for: .normal)
+        } else {
+            skipButton.setTitle("Skip", for: .normal)
+        }
+        
+        print("Current Page: ", pageControl.currentPage)
     }
 }
 
@@ -82,3 +108,4 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
 
 #warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
 #warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")
+#warning("TODO - a separate branch with comments left")
