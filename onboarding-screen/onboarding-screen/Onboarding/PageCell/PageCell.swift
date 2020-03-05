@@ -9,12 +9,16 @@
 import UIKit
 
 final class PageCell: UICollectionViewCell {
+    @IBOutlet private weak var headlineText: UILabel!
+    @IBOutlet private weak var captionText: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
-    func configureCell(item: UIColor) {
-        backgroundColor = item
+    func configure(with item: Page) {
+        headlineText.text = item.headlineText
+        captionText.text = item.captionText
     }
 }
