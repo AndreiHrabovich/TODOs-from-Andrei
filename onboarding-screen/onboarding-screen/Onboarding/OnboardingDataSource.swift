@@ -8,15 +8,10 @@
 
 import UIKit
 
-protocol OnboardingDataSourceProtocol: UICollectionViewDataSource {
-    var items: [Page] { get }
-    #warning("TODO - to find out how to extract the data source the right way")
-}
-
-class OnboardingDataSource: NSObject, OnboardingDataSourceProtocol {
+class OnboardingDataSource: NSObject {
     var items: [Page] {
         #warning("TODO - consider using info source manager")
-
+        
         return [
             Page(headlineText: "Step 1", captionText: "Caption 1"),
             Page(headlineText: "Step 2", captionText: "Caption 2"),
@@ -25,7 +20,9 @@ class OnboardingDataSource: NSObject, OnboardingDataSourceProtocol {
             Page(headlineText: "Step 5", captionText: "Caption 5")
         ]
     }
-        
+}
+
+extension OnboardingDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }

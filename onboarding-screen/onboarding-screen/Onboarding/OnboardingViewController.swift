@@ -16,9 +16,9 @@ final class OnboardingViewController: UIViewController {
     
     // MARK: - Properties
     
-    var onboardingDataSource: OnboardingDataSourceProtocol? = OnboardingDataSource()
+    var onboardingDataSource = OnboardingDataSource()
     var pageCount: Int {
-        return onboardingDataSource?.items.count ?? .zero
+        return onboardingDataSource.items.count
     }
     
     // MARK: - IBOutlets
