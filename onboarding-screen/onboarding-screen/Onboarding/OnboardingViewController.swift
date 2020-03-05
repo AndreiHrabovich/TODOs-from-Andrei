@@ -10,14 +10,15 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
     enum LayoutConstants {
-        static let padding: CGFloat = .zero // - 7
-        static let sectionInset: UIEdgeInsets = .zero // - 7
+        static let padding: CGFloat = .zero
+        static let sectionInset: UIEdgeInsets = .zero
     }
     
     // MARK: - Properties
     
     #warning("TODO - to use R.swift instead")
     private let cellID = "PageCell"
+    #warning("TODO - move this to ")
     private let colors: [UIColor] = [.green, .blue, .yellow, .orange, .red]
     
     // MARK: - IBOutlets
@@ -50,7 +51,7 @@ final class OnboardingViewController: UIViewController {
     
     @IBAction private func skipButtonTapped(_ sender: UIButton) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return } // 3 and 4
+        guard let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return }
         
         switchRootViewController(rootViewController: mainVC, animated: true, completion: nil)
     }
@@ -59,21 +60,31 @@ final class OnboardingViewController: UIViewController {
     
     private func setupUI() {
         collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
-        collectionView.delegate = self as UICollectionViewDelegate // - 5
+        collectionView.delegate = self as UICollectionViewDelegate
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         
-        pageControl.numberOfPages = colors.count
-        skipButton.setTitle("Skip", for: .normal)
-        #warning("TODO - page control customization (color etc.)")
+        setPageControl(numberOfPages: colors.count)
+        setSkipButton(title: "Skip", titleColor: .systemGray, bgColor: .clear)
     }
     
     private func handleSkipButtonAppearance () {
-        if pageControl.currentPage == (colors.count - 1) { // - 6
-            skipButton.setTitle("Start", for: .normal)
+        if pageControl.currentPage == (colors.count - 1) {
+            setSkipButton(title: "Start", titleColor: .white, bgColor: .systemRed)
         } else {
-            skipButton.setTitle("Skip", for: .normal)
+            setSkipButton(title: "Skip", titleColor: .systemGray, bgColor: .clear)
         }
+    }
+    
+    private func setSkipButton(title: String, titleColor: UIColor, bgColor: UIColor) {
+        skipButton.setTitle(title, for: .normal)
+        skipButton.backgroundColor = bgColor
+        skipButton.setTitleColor(titleColor, for: .normal)
+        skipButton.layer.cornerRadius = 5
+    }
+    
+    private func setPageControl(numberOfPages: Int) {
+        pageControl.numberOfPages = numberOfPages
     }
 }
 
@@ -98,42 +109,12 @@ extension OnboardingViewController: UICollectionViewDataSource {
 
 extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(scrollView.contentOffset.x / collectionView.frame.size.width) // - 1
-        handleSkipButtonAppearance() // - 2
+        pageControl.currentPage = Int(scrollView.contentOffset.x / collectionView.frame.size.width)
+        handleSkipButtonAppearance()
     }
-    
-    // can do without these methods exention by setting the properties directly
-    // but if different cells have different cises, use the delegate
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // - 7
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let height = collectionView.frame.size.height
-//        let width = collectionView.frame.size.width
-//        return CGSize(width: width, height: height)
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0 // - 7
-//    }
-    
 }
 
 #warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
 #warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")
 #warning("TODO - a separate branch with comments left")
 #warning("To deploy to a real device wirelessly, make sure the Mac and the iOS device are connected to the same network, otherwise use TestFlight")
-
-/*
- Comments:
- 
- 1 - USE collectionView.frame.width because it can be of different value and it directly affects the calculation
- 2 - Probably that's the place to change the button from Skip to Start when reaching the last page
- 3 - STORYBOARD.instantiateViewController(identifier: "MainVC") - available only in iOS13
- 4 - If that's the only vc in the storyboard, can we do without identifier (Storyboard ID) ?
- 5 - The delegate is needed anyways (without it the cells don't scale properly)
- 6 - Because the array starts from 0
- 7 - Returning 0 (or better .zero) is need to overrride this bacause it will add 5 or 10 by default
- */
