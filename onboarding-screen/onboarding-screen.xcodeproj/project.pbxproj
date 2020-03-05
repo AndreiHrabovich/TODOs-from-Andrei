@@ -11,6 +11,7 @@
 		F71579C7241151FC005CBD81 /* OnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71579C6241151FC005CBD81 /* OnboardingDataSource.swift */; };
 		F71579CA24115E26005CBD81 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71579C924115E26005CBD81 /* Page.swift */; };
 		F71579CC24116642005CBD81 /* UICollectionView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71579CB24116642005CBD81 /* UICollectionView + Extension.swift */; };
+		F71579CE24119D02005CBD81 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71579CD24119D02005CBD81 /* DataManager.swift */; };
 		F7A85E5F240FB36800267CA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E5E240FB36800267CA4 /* AppDelegate.swift */; };
 		F7A85E63240FB36800267CA4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E62240FB36800267CA4 /* MainViewController.swift */; };
 		F7A85E66240FB36800267CA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E64240FB36800267CA4 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		F71579C6241151FC005CBD81 /* OnboardingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataSource.swift; sourceTree = "<group>"; };
 		F71579C924115E26005CBD81 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		F71579CB24116642005CBD81 /* UICollectionView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extension.swift"; sourceTree = "<group>"; };
+		F71579CD24119D02005CBD81 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		F7A85E5B240FB36800267CA4 /* onboarding-screen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboarding-screen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A85E5E240FB36800267CA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7A85E62240FB36800267CA4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,14 @@
 				F71579C924115E26005CBD81 /* Page.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F71579CF24119D22005CBD81 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F71579CD24119D02005CBD81 /* DataManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		F7A85E52240FB36800267CA4 = {
@@ -110,6 +120,7 @@
 		F7A85E74240FCA3000267CA4 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				F71579CF24119D22005CBD81 /* Managers */,
 				F71579C824115E19005CBD81 /* Model */,
 				F7A85E79240FCC1800267CA4 /* PageCell */,
 				F7A85E75240FCA7200267CA4 /* OnboardingViewController.swift */,
@@ -229,6 +240,7 @@
 				F71579C7241151FC005CBD81 /* OnboardingDataSource.swift in Sources */,
 				F71579CA24115E26005CBD81 /* Page.swift in Sources */,
 				F7A85E7C240FCC3B00267CA4 /* PageCell.swift in Sources */,
+				F71579CE24119D02005CBD81 /* DataManager.swift in Sources */,
 				F7A85E5F240FB36800267CA4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

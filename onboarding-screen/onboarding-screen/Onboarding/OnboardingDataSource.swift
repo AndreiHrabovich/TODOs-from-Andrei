@@ -10,15 +10,7 @@ import UIKit
 
 class OnboardingDataSource: NSObject {
     var items: [Page] {
-        #warning("TODO - consider using info source manager")
-        
-        return [
-            Page(headlineText: "Step 1", captionText: "Caption 1"),
-            Page(headlineText: "Step 2", captionText: "Caption 2"),
-            Page(headlineText: "Step 3", captionText: "Caption 3"),
-            Page(headlineText: "Step 4", captionText: "Caption 4"),
-            Page(headlineText: "Step 5", captionText: "Caption 5")
-        ]
+        return DataManager.items
     }
 }
 
