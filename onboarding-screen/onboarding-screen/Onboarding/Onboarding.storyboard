@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="628-Km-bHD">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,7 +31,7 @@
                                         <cells/>
                                     </collectionView>
                                     <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Tow-uf-OcG">
-                                        <rect key="frame" x="0.0" y="682" width="414" height="50"/>
+                                        <rect key="frame" x="187.5" y="682" width="39" height="50"/>
                                         <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="gOE-8p-MDI"/>
@@ -56,24 +57,22 @@
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Tow-uf-OcG" secondAttribute="trailing" id="7xj-CK-96i"/>
-                                    <constraint firstAttribute="trailing" secondItem="IaT-Ce-bc5" secondAttribute="trailing" constant="20" symbolic="YES" id="aS2-8F-ACe"/>
-                                    <constraint firstItem="IaT-Ce-bc5" firstAttribute="leading" secondItem="IA4-Sf-kqi" secondAttribute="leading" constant="20" symbolic="YES" id="gR0-ar-eHZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="IaT-Ce-bc5" secondAttribute="trailing" constant="20" symbolic="YES" id="cI6-wV-nyi"/>
+                                    <constraint firstItem="IaT-Ce-bc5" firstAttribute="leading" secondItem="IA4-Sf-kqi" secondAttribute="leading" constant="20" symbolic="YES" id="sBA-Za-mmb"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="top" secondItem="DQg-Or-qq0" secondAttribute="top" id="9Gd-e3-LHY"/>
-                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="trailing" secondItem="eq3-Av-RJP" secondAttribute="trailing" id="EXf-5k-AJc"/>
-                            <constraint firstAttribute="bottom" secondItem="IA4-Sf-kqi" secondAttribute="bottom" constant="20" symbolic="YES" id="WmI-eo-OPc"/>
-                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="leading" secondItem="eq3-Av-RJP" secondAttribute="leading" id="oAl-y0-Ywk"/>
+                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="top" secondItem="DQg-Or-qq0" secondAttribute="top" id="2rU-b8-imj"/>
+                            <constraint firstAttribute="bottom" secondItem="IA4-Sf-kqi" secondAttribute="bottom" constant="20" symbolic="YES" id="UDw-4r-fgH"/>
+                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="leading" secondItem="DQg-Or-qq0" secondAttribute="leading" id="WZZ-9i-4ed"/>
+                            <constraint firstItem="IA4-Sf-kqi" firstAttribute="trailing" secondItem="DQg-Or-qq0" secondAttribute="trailing" id="olj-NY-KQu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="DQg-Or-qq0"/>
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="IaT-Ce-bc5" id="KEx-fW-yAp"/>
-                        <outlet property="layout" destination="uiq-cD-xlB" id="o1u-aR-GT4"/>
                         <outlet property="pageControl" destination="Tow-uf-OcG" id="d2m-5v-Fo1"/>
                         <outlet property="skipButton" destination="XjO-41-YOG" id="Seb-MQ-JyU"/>
                     </connections>

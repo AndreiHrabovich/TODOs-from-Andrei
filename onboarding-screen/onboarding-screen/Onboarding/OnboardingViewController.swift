@@ -9,6 +9,11 @@
 import UIKit
 
 final class OnboardingViewController: UIViewController {
+    enum LayoutConstants {
+        static let padding: CGFloat = .zero
+        static let sectionInset: UIEdgeInsets = .zero
+    }
+    
     // MARK: - Properties
     
     #warning("TODO - to use R.swift instead")
@@ -18,7 +23,6 @@ final class OnboardingViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var collectionView: UICollectionView!
-    @IBOutlet private weak var layout: UICollectionViewFlowLayout!
     @IBOutlet private weak var pageControl: UIPageControl!
     @IBOutlet private weak var skipButton: UIButton!
     
@@ -27,6 +31,23 @@ final class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = collectionView.frame.size
+
+            print("Layout - ", layout.itemSize)
+            print("Superview -", view.frame.size)
+            print("Screen - ", UIScreen.main.bounds.size)
+            
+            layout.minimumInteritemSpacing = LayoutConstants.padding
+            layout.minimumLineSpacing = LayoutConstants.padding
+            layout.sectionInset = LayoutConstants.sectionInset
+            layout.scrollDirection = .horizontal
+        }
+        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     deinit {
@@ -51,10 +72,9 @@ final class OnboardingViewController: UIViewController {
     
     private func setupUI() {
         collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
-        collectionView.delegate = self // - 5
+        collectionView.delegate = self as? UICollectionViewDelegate // - 5
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
-        layout.scrollDirection = .horizontal
         
         pageControl.numberOfPages = colors.count
         skipButton.setTitle("Skip", for: .normal)
@@ -89,21 +109,24 @@ extension OnboardingViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let height = collectionView.frame.height
-        let width = collectionView.frame.size.width
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0 // - 7
-    }
-}
+// can do without this exention by setting the properties directly
+// but if different cells have different cises, use the delegate
+
+//extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let height = collectionView.frame.size.height
+//        let width = collectionView.frame.size.width
+//        return CGSize(width: width, height: height)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+//        return 0 // - 7
+//    }
+//}
 
 #warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
 #warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")
