@@ -29,6 +29,10 @@ final class OnboardingViewController: UIViewController {
         setupUI()
     }
     
+    deinit {
+        print("ONBOARDING VC DEINITIALIZED")
+    }
+    
     internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         pageControl.currentPage = Int(targetContentOffset.pointee.x / collectionView.frame.width) // - 1
         handleSkipButtonAppearance() // - 2
@@ -39,10 +43,11 @@ final class OnboardingViewController: UIViewController {
     @IBAction private func skipButtonTapped(_ sender: UIButton) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return } // 3 and 4
-        mainVC.modalPresentationStyle = .fullScreen
         
-        present(mainVC, animated: true, completion: nil)
-        #warning("TODO - to figure out how to dismiss the onboarding vc after navigating to the main vc")
+        mainVC.modalPresentationStyle = .fullScreen
+        present(mainVC, animated: true) {
+            UIApplication.shared.keyWindow?.rootViewController = mainVC
+        }
     }
     
     // MARK: - Helpers
