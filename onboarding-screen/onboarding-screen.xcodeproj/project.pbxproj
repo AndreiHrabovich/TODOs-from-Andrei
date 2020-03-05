@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F71579C5241106E8005CBD81 /* UIViewController + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F71579C4241106E8005CBD81 /* UIViewController + Extensions.swift */; };
 		F7A85E5F240FB36800267CA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E5E240FB36800267CA4 /* AppDelegate.swift */; };
 		F7A85E63240FB36800267CA4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E62240FB36800267CA4 /* MainViewController.swift */; };
 		F7A85E66240FB36800267CA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E64240FB36800267CA4 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F71579C4241106E8005CBD81 /* UIViewController + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extensions.swift"; sourceTree = "<group>"; };
 		F7A85E5B240FB36800267CA4 /* onboarding-screen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "onboarding-screen.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7A85E5E240FB36800267CA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7A85E62240FB36800267CA4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F71579C3241106D5005CBD81 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F71579C4241106E8005CBD81 /* UIViewController + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F7A85E52240FB36800267CA4 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 		F7A85E5D240FB36800267CA4 /* onboarding-screen */ = {
 			isa = PBXGroup;
 			children = (
+				F71579C3241106D5005CBD81 /* Extensions */,
 				F7A85E74240FCA3000267CA4 /* Onboarding */,
 				F7A85E73240FCA2100267CA4 /* Main */,
 				F7A85E5E240FB36800267CA4 /* AppDelegate.swift */,
@@ -194,6 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F71579C5241106E8005CBD81 /* UIViewController + Extensions.swift in Sources */,
 				F7A85E63240FB36800267CA4 /* MainViewController.swift in Sources */,
 				F7A85E76240FCA7200267CA4 /* OnboardingViewController.swift in Sources */,
 				F7A85E7C240FCC3B00267CA4 /* PageCell.swift in Sources */,

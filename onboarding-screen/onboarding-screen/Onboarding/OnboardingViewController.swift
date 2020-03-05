@@ -44,10 +44,7 @@ final class OnboardingViewController: UIViewController {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return } // 3 and 4
         
-        mainVC.modalPresentationStyle = .fullScreen
-        present(mainVC, animated: true) {
-            UIApplication.shared.keyWindow?.rootViewController = mainVC
-        }
+        switchRootViewController(rootViewController: mainVC, animated: true, completion: nil)
     }
     
     // MARK: - Helpers
