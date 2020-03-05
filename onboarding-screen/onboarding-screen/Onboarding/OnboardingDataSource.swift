@@ -10,6 +10,7 @@ import UIKit
 
 protocol OnboardingDataSourceProtocol: UICollectionViewDataSource {
     var items: [Page] { get }
+    #warning("TODO - to find out how to extract the data source the right way")
 }
 
 class OnboardingDataSource: NSObject, OnboardingDataSourceProtocol {
@@ -24,19 +25,17 @@ class OnboardingDataSource: NSObject, OnboardingDataSourceProtocol {
             Page(headlineText: "Step 5", captionText: "Caption 5")
         ]
     }
-    
-    #warning("TODO - use R.swift or class subscript")
-    private let cellID = "PageCell"
-    
+        
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
-        
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? PageCell else { return UICollectionViewCell() }
+        // register and dequeue through extension methods
+        collectionView.register(nibCell: PageCell.self)
+        let cell = collectionView.dequeue(cell: PageCell.self, for: indexPath)
         cell.configure(with: items[indexPath.item])
         return cell
     }
 }
+

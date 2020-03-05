@@ -14,11 +14,13 @@ final class PageCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configure(with item: Page) {
         headlineText.text = item.headlineText
         captionText.text = item.captionText
     }
+    
+    #warning("TODO - fix constraints in xib")
+    // stack view centered + fixed label size (oe without fixed size) -> ambiguous constraints
 }

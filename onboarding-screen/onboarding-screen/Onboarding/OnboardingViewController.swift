@@ -69,6 +69,7 @@ final class OnboardingViewController: UIViewController {
     }
     
     private func handleSkipButtonAppearance () {
+        #warning("TODO - to find the way to beautify the animation / transition")
         if pageControl.currentPage == (pageCount) - 1 {
             setSkipButton(title: "Start", titleColor: .white, bgColor: .systemRed)
         } else {
