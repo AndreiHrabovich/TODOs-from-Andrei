@@ -34,4 +34,3 @@ extension UICollectionView {
 }
 
 // these are to reqister and dequeue cells through subscripts
-#warning("TODO - learn more about these")

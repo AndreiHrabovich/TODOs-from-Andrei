@@ -101,4 +101,3 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
 }
 
 #warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
-#warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")

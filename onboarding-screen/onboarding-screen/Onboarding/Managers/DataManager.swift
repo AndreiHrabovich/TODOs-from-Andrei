@@ -19,3 +19,5 @@ class DataManager {
         ]
     }
 }
+
+#warning("TODO - to find out whether this is the right way to implement a data manager")
