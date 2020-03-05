@@ -20,7 +20,6 @@ final class PageCell: UICollectionViewCell {
         headlineText.text = item.headlineText
         captionText.text = item.captionText
     }
-    
-    #warning("TODO - fix constraints in xib")
-    // stack view centered + fixed label size (oe without fixed size) -> ambiguous constraints
 }
+
+// in xib files, you need to add a view (as a container, if there no such one) before adding a stack view and lables inside

@@ -16,8 +16,12 @@
                 <rect key="frame" x="0.0" y="0.0" width="459" height="589"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yAL-50-guf">
-                        <rect key="frame" x="183" y="251" width="92.5" height="58"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elk-UM-aKd">
+                        <rect key="frame" x="0.0" y="0.0" width="459" height="589"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yAL-50-guf">
+                        <rect key="frame" x="183.5" y="265.5" width="92.5" height="58"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="headline" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQE-9m-yi1">
                                 <rect key="frame" x="0.0" y="0.0" width="92.5" height="27.5"/>
@@ -35,6 +39,14 @@
                     </stackView>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="elk-UM-aKd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="2U9-VD-sht"/>
+                <constraint firstItem="elk-UM-aKd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2Uy-58-j09"/>
+                <constraint firstItem="yAL-50-guf" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Gnk-YK-qeo"/>
+                <constraint firstAttribute="trailing" secondItem="elk-UM-aKd" secondAttribute="trailing" id="M9C-L5-2lU"/>
+                <constraint firstAttribute="bottom" secondItem="elk-UM-aKd" secondAttribute="bottom" id="jyQ-tr-7LG"/>
+                <constraint firstItem="yAL-50-guf" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="mlX-Ym-C2h"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="459" height="589"/>
             <connections>
