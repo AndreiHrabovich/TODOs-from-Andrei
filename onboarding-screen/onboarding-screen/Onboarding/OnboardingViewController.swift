@@ -10,8 +10,8 @@ import UIKit
 
 final class OnboardingViewController: UIViewController {
     enum LayoutConstants {
-        static let padding: CGFloat = .zero
-        static let sectionInset: UIEdgeInsets = .zero
+        static let padding: CGFloat = .zero // - 7
+        static let sectionInset: UIEdgeInsets = .zero // - 7
     }
     
     // MARK: - Properties
@@ -36,27 +36,14 @@ final class OnboardingViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = collectionView.frame.size
+            layout.estimatedItemSize = collectionView.frame.size
 
-            print("Layout - ", layout.itemSize)
-            print("Superview -", view.frame.size)
-            print("Screen - ", UIScreen.main.bounds.size)
-            
             layout.minimumInteritemSpacing = LayoutConstants.padding
             layout.minimumLineSpacing = LayoutConstants.padding
             layout.sectionInset = LayoutConstants.sectionInset
             layout.scrollDirection = .horizontal
         }
-        collectionView.collectionViewLayout.invalidateLayout()
-    }
-    
-    deinit {
-        print("ONBOARDING VC DEINITIALIZED")
-    }
-    
-    internal func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        pageControl.currentPage = Int(targetContentOffset.pointee.x / collectionView.frame.width) // - 1
-        handleSkipButtonAppearance() // - 2
+//        collectionView.collectionViewLayout.invalidateLayout()
     }
     
     // MARK: - IBActions
@@ -72,7 +59,7 @@ final class OnboardingViewController: UIViewController {
     
     private func setupUI() {
         collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
-        collectionView.delegate = self as? UICollectionViewDelegate // - 5
+        collectionView.delegate = self as UICollectionViewDelegate // - 5
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         
@@ -109,12 +96,17 @@ extension OnboardingViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-// can do without this exention by setting the properties directly
-// but if different cells have different cises, use the delegate
+extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x / collectionView.frame.size.width) // - 1
+        handleSkipButtonAppearance() // - 2
+    }
+    
+    // can do without these methods exention by setting the properties directly
+    // but if different cells have different cises, use the delegate
 
-//extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+//        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // - 7
 //    }
 //
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -126,7 +118,8 @@ extension OnboardingViewController: UICollectionViewDataSource {
 //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
 //        return 0 // - 7
 //    }
-//}
+    
+}
 
 #warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
 #warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")
@@ -142,5 +135,5 @@ extension OnboardingViewController: UICollectionViewDataSource {
  4 - If that's the only vc in the storyboard, can we do without identifier (Storyboard ID) ?
  5 - The delegate is needed anyways (without it the cells don't scale properly)
  6 - Because the array starts from 0
- 7 - Returning 0 is need to overrride this bacause it will add 5 or 10 by default
+ 7 - Returning 0 (or better .zero) is need to overrride this bacause it will add 5 or 10 by default
  */
