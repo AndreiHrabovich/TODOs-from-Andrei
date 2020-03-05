@@ -8,9 +8,13 @@
 
 import UIKit
 
-class PageCell: UICollectionViewCell {
+final class PageCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func configureCell(item: UIColor) {
+        backgroundColor = item
     }
 }

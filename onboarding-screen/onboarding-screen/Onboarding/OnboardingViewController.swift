@@ -16,10 +16,10 @@ final class OnboardingViewController: UIViewController {
     
     // MARK: - Properties
     
-    #warning("TODO - to use R.swift instead")
-    private let cellID = "PageCell"
-    #warning("TODO - move this to ")
-    private let colors: [UIColor] = [.green, .blue, .yellow, .orange, .red]
+    var onboardingDataSource: OnboardingDataSourceProtocol? = OnboardingDataSource()
+    var pageCount: Int {
+        return onboardingDataSource?.items.count ?? .zero
+    }
     
     // MARK: - IBOutlets
     
@@ -59,17 +59,17 @@ final class OnboardingViewController: UIViewController {
     // MARK: - Helpers
     
     private func setupUI() {
-        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
+//        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
         collectionView.delegate = self as UICollectionViewDelegate
-        collectionView.dataSource = self
+        collectionView.dataSource = onboardingDataSource
         collectionView.isPagingEnabled = true
         
-        setPageControl(numberOfPages: colors.count)
+        setPageControl(numberOfPages: pageCount)
         setSkipButton(title: "Skip", titleColor: .systemGray, bgColor: .clear)
     }
     
     private func handleSkipButtonAppearance () {
-        if pageControl.currentPage == (colors.count - 1) {
+        if pageControl.currentPage == (pageCount) - 1 {
             setSkipButton(title: "Start", titleColor: .white, bgColor: .systemRed)
         } else {
             setSkipButton(title: "Skip", titleColor: .systemGray, bgColor: .clear)
@@ -88,23 +88,6 @@ final class OnboardingViewController: UIViewController {
     }
 }
 
-#warning("TODO - to extract delegate and data source to a standalone entity")
-// MARK: - UICollectionViewDataSource
-
-extension OnboardingViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return colors.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? PageCell else { return UICollectionViewCell() }
-        let color = colors[indexPath.item]
-        cell.backgroundColor = color
-        #warning("TODO - configure cell in the Page Cell")
-        return cell
-    }
-}
-
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
@@ -116,5 +99,3 @@ extension OnboardingViewController: UICollectionViewDelegateFlowLayout {
 
 #warning("TODO - to figure out how to avoid showing this thing every time, should work only for the first time")
 #warning("TODO - to find out whether it's possible to use the page control to navigate the onboarding screen")
-#warning("TODO - a separate branch with comments left")
-#warning("To deploy to a real device wirelessly, make sure the Mac and the iOS device are connected to the same network, otherwise use TestFlight")
