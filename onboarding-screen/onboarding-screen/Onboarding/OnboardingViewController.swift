@@ -63,6 +63,8 @@ final class OnboardingViewController: UIViewController {
         collectionView.delegate = self as UICollectionViewDelegate
         collectionView.dataSource = onboardingDataSource
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
         
         setPageControl(numberOfPages: pageCount)
         setSkipButton(title: "Skip", titleColor: .systemGray, bgColor: .clear)
