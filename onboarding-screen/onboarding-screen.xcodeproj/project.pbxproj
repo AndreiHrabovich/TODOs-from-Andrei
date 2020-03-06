@@ -21,6 +21,8 @@
 		F7A85E78240FCA9100267CA4 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E77240FCA9100267CA4 /* Onboarding.storyboard */; };
 		F7A85E7C240FCC3B00267CA4 /* PageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7A85E7A240FCC3B00267CA4 /* PageCell.swift */; };
 		F7A85E7D240FCC3B00267CA4 /* PageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7A85E7B240FCC3B00267CA4 /* PageCell.xib */; };
+		F7EEFA2024124C6200E82619 /* AppCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEFA1F24124C6200E82619 /* AppCache.swift */; };
+		F7EEFA22241254E000E82619 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EEFA21241254E000E82619 /* Assembler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		F7A85E77240FCA9100267CA4 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		F7A85E7A240FCC3B00267CA4 /* PageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageCell.swift; sourceTree = "<group>"; };
 		F7A85E7B240FCC3B00267CA4 /* PageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageCell.xib; sourceTree = "<group>"; };
+		F7EEFA1F24124C6200E82619 /* AppCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCache.swift; sourceTree = "<group>"; };
+		F7EEFA21241254E000E82619 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +101,7 @@
 		F7A85E5D240FB36800267CA4 /* onboarding-screen */ = {
 			isa = PBXGroup;
 			children = (
+				F7EEFA1E24124C5200E82619 /* Storage */,
 				F71579C3241106D5005CBD81 /* Extensions */,
 				F7A85E74240FCA3000267CA4 /* Onboarding */,
 				F7A85E73240FCA2100267CA4 /* Main */,
@@ -104,6 +109,7 @@
 				F7A85E67240FB36900267CA4 /* Assets.xcassets */,
 				F7A85E69240FB36900267CA4 /* LaunchScreen.storyboard */,
 				F7A85E6C240FB36900267CA4 /* Info.plist */,
+				F7EEFA21241254E000E82619 /* Assembler.swift */,
 			);
 			path = "onboarding-screen";
 			sourceTree = "<group>";
@@ -137,6 +143,14 @@
 				F7A85E7B240FCC3B00267CA4 /* PageCell.xib */,
 			);
 			path = PageCell;
+			sourceTree = "<group>";
+		};
+		F7EEFA1E24124C5200E82619 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				F7EEFA1F24124C6200E82619 /* AppCache.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,10 +247,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7EEFA2024124C6200E82619 /* AppCache.swift in Sources */,
 				F71579C5241106E8005CBD81 /* UIViewController + Extensions.swift in Sources */,
 				F7A85E63240FB36800267CA4 /* MainViewController.swift in Sources */,
 				F71579CC24116642005CBD81 /* UICollectionView + Extension.swift in Sources */,
 				F7A85E76240FCA7200267CA4 /* OnboardingViewController.swift in Sources */,
+				F7EEFA22241254E000E82619 /* Assembler.swift in Sources */,
 				F71579C7241151FC005CBD81 /* OnboardingDataSource.swift in Sources */,
 				F71579CA24115E26005CBD81 /* Page.swift in Sources */,
 				F7A85E7C240FCC3B00267CA4 /* PageCell.swift in Sources */,
