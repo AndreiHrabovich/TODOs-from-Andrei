@@ -38,7 +38,6 @@ final class OnboardingViewController: UIViewController {
         super.viewDidLayoutSubviews()
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.estimatedItemSize = collectionView.frame.size
-
             layout.minimumInteritemSpacing = LayoutConstants.padding
             layout.minimumLineSpacing = LayoutConstants.padding
             layout.sectionInset = LayoutConstants.sectionInset
@@ -59,7 +58,6 @@ final class OnboardingViewController: UIViewController {
     // MARK: - Helpers
     
     private func setupUI() {
-//        collectionView.register(UINib(nibName: cellID, bundle: nil), forCellWithReuseIdentifier: cellID)
         collectionView.delegate = self as UICollectionViewDelegate
         collectionView.dataSource = onboardingDataSource
         collectionView.isPagingEnabled = true
