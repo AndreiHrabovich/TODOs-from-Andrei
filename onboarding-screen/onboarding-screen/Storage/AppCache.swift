@@ -10,15 +10,12 @@ import Foundation
 
 class AppCache {
     private let userDefaults = UserDefaults.standard
-    private let flagKey = "isOnboardingRequired"
-    var isOnboardingRequired: Bool {
-//        didSet(flag) {
-//            userDefaults.set(flag, forKey: "isOnboardingRequired")
-//        }
+    private let flagKey = "shouldSkipToMain"
+    var shouldSkipToMain: Bool {
         get {
             return (userDefaults.object(forKey: flagKey) != nil)
         }
-        
+
         set(flag) {
             userDefaults.set(flag, forKey: flagKey)
         }

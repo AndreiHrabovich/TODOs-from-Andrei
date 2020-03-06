@@ -11,12 +11,12 @@ import UIKit
 @UIApplicationMain
 final class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
-    private let appCache = AppCache()
+    let appCache = AppCache()
         
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = Assembler.assembleRootVC(withFlag: appCache.isOnboardingRequired)
+        window?.rootViewController = Assembler.assembleRootVC(withFlag: appCache.shouldSkipToMain)
         
         return true
     }

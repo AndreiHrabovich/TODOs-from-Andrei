@@ -51,7 +51,7 @@ final class OnboardingViewController: UIViewController {
     @IBAction private func skipButtonTapped(_ sender: UIButton) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return }
-        
+        AppDelegate().appCache.shouldSkipToMain = true
         switchRootViewController(rootViewController: mainVC, animated: true, completion: nil)
     }
     

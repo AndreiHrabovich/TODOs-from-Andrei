@@ -15,6 +15,6 @@ final class Assembler {
         let mainVC = UIStoryboard(name: "Main", bundle: nil)
             .instantiateViewController(withIdentifier: "MainVC")
         
-        return flag ? onboardingVC : mainVC
+        return !flag ? onboardingVC : mainVC
     }
 }
