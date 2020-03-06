@@ -101,15 +101,11 @@
 		F7A85E5D240FB36800267CA4 /* onboarding-screen */ = {
 			isa = PBXGroup;
 			children = (
+				F7EEFA23241256E600E82619 /* Application */,
 				F7EEFA1E24124C5200E82619 /* Storage */,
 				F71579C3241106D5005CBD81 /* Extensions */,
 				F7A85E74240FCA3000267CA4 /* Onboarding */,
 				F7A85E73240FCA2100267CA4 /* Main */,
-				F7A85E5E240FB36800267CA4 /* AppDelegate.swift */,
-				F7A85E67240FB36900267CA4 /* Assets.xcassets */,
-				F7A85E69240FB36900267CA4 /* LaunchScreen.storyboard */,
-				F7A85E6C240FB36900267CA4 /* Info.plist */,
-				F7EEFA21241254E000E82619 /* Assembler.swift */,
 			);
 			path = "onboarding-screen";
 			sourceTree = "<group>";
@@ -151,6 +147,18 @@
 				F7EEFA1F24124C6200E82619 /* AppCache.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		F7EEFA23241256E600E82619 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				F7A85E5E240FB36800267CA4 /* AppDelegate.swift */,
+				F7EEFA21241254E000E82619 /* Assembler.swift */,
+				F7A85E67240FB36900267CA4 /* Assets.xcassets */,
+				F7A85E69240FB36900267CA4 /* LaunchScreen.storyboard */,
+				F7A85E6C240FB36900267CA4 /* Info.plist */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -403,7 +411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 935FP7QC5P;
-				INFOPLIST_FILE = "onboarding-screen/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/onboarding-screen/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -422,7 +430,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 935FP7QC5P;
-				INFOPLIST_FILE = "onboarding-screen/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/onboarding-screen/Application/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
