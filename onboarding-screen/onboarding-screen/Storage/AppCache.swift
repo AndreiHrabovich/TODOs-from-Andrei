@@ -8,7 +8,7 @@
 
 import Foundation
 
-class AppCache {
+final class AppCache {
     private let userDefaults = UserDefaults.standard
     private let flagKey = "shouldSkipToMain"
     var shouldSkipToMain: Bool {

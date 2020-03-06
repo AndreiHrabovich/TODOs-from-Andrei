@@ -8,7 +8,7 @@
 
 import Foundation
 
-class DataManager {
+final class DataManager {
     static var items: [Page] {        
         return [
             Page(headlineText: "Step 1", captionText: "Caption 1"),
@@ -19,5 +19,3 @@ class DataManager {
         ]
     }
 }
-
-#warning("TODO - to find out whether this is the right way to implement a data manager")

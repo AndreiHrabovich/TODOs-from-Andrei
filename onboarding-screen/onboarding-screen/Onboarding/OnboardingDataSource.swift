@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OnboardingDataSource: NSObject {
+final class OnboardingDataSource: NSObject {
     var items: [Page] {
         return DataManager.items
     }
