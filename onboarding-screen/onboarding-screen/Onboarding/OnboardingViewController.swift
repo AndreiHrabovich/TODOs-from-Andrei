@@ -20,7 +20,9 @@ final class OnboardingViewController: UIViewController {
     var pageCount: Int {
         return onboardingDataSource.items.count
     }
-    
+//    weak var appDelegate = UIApplication.shared.delegate as? AppDelegate
+    // can do withou it if we call the app cache singleton directly
+
     // MARK: - IBOutlets
     
     @IBOutlet private weak var collectionView: UICollectionView!
@@ -51,7 +53,10 @@ final class OnboardingViewController: UIViewController {
     @IBAction private func skipButtonTapped(_ sender: UIButton) {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         guard let mainVC = mainStoryboard.instantiateViewController(withIdentifier: "MainVC") as? MainViewController else { return }
-        AppDelegate().appCache.shouldSkipToMain = true
+    
+//        appDelegate?.appCache.shouldSkipToMain = true
+        // can do withou it if we call the app cache singleton directly
+        AppCache.shared.shouldSkipToMain = true
         switchRootViewController(rootViewController: mainVC, animated: true, completion: nil)
     }
     

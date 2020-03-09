@@ -20,4 +20,8 @@ final class AppCache {
             userDefaults.set(flag, forKey: flagKey)
         }
     }
+    
+    private init() {}
+    
+    static let shared = AppCache()
 }
